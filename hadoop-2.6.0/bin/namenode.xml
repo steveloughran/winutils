@@ -1,0 +1,7 @@
+<service>
+  <id>namenode</id>
+  <name>namenode</name>
+  <description>This service runs Hadoop namenode</description>
+  <executable>c:\java\jdk7\bin\java</executable>
+  <arguments>-Xmx192m  -Dhadoop.log.dir=c:\hadoop\logs\hadoop -Dhadoop.log.file=hadoop-namenode-MORZINE.log -Dhadoop.home.dir=c:\hdp\hadoop-2.6.0.2.2.0.0-2041 -Dhadoop.id.str=Administrator -Dhadoop.root.logger=INFO,DRFA -Djava.library.path=;c:\hdp\hadoop-2.6.0.2.2.0.0-2041\bin -Dhadoop.policy.file=hadoop-policy.xml -Djava.net.preferIPv4Stack=true -Xloggc:c:\hadoop\logs\hadoop/gc-namenode.log -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Dhadoop.security.logger=INFO,RFAS -Dhdfs.audit.logger=INFO,RFAAUDIT -Xloggc:c:\hadoop\logs\hadoop/gc-namenode.log -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Dhadoop.security.logger=INFO,RFAS -Dhdfs.audit.logger=INFO,RFAAUDIT  -classpath c:\hdp\hadoop-2.6.0.2.2.0.0-2041\etc\hadoop;c:\hdp\hadoop-2.6.0.2.2.0.0-2041\share\hadoop\common\lib\*;c:\hdp\hadoop-2.6.0.2.2.0.0-2041\share\hadoop\common\*;c:\hdp\hadoop-2.6.0.2.2.0.0-2041\share\hadoop\hdfs;c:\hdp\hadoop-2.6.0.2.2.0.0-2041\share\hadoop\hdfs\lib\*;c:\hdp\hadoop-2.6.0.2.2.0.0-2041\share\hadoop\hdfs\*;c:\hdp\hadoop-2.6.0.2.2.0.0-2041\share\hadoop\yarn\lib\*;c:\hdp\hadoop-2.6.0.2.2.0.0-2041\share\hadoop\yarn\*;c:\hdp\hadoop-2.6.0.2.2.0.0-2041\share\hadoop\mapreduce\lib\*;c:\hdp\hadoop-2.6.0.2.2.0.0-2041\share\hadoop\mapreduce\* org.apache.hadoop.hdfs.server.namenode.NameNode</arguments>
+</service>
