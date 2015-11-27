@@ -1,0 +1,7 @@
+<service>
+  <id>historyserver</id>
+  <name>historyserver</name>
+  <description>This service runs Hadoop historyserver</description>
+  <executable>c:\java\jdk8\bin\java</executable>
+  <arguments>-Xmx192m  -Dhadoop.log.file=mapred-historyserver-MORZINE.log -Dhadoop.log.dir=c:\hadoop\logs\hadoop -Dhadoop.log.file=mapred-historyserver-MORZINE.log -Dhadoop.home.dir=c:\hdp\hadoop-2.7.1.2.3.0.0-2557 -Dhadoop.id.str=Administrator -Dhadoop.root.logger=INFO,DRFA -Djava.library.path=;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\bin -Dhadoop.policy.file=hadoop-policy.xml -Djava.net.preferIPv4Stack=true -Dmapred.jobsummary.logger=INFO,console  -classpath c:\hdp\hadoop-2.7.1.2.3.0.0-2557\etc\hadoop;;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\etc\hadoop;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\share\hadoop\common\lib\*;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\share\hadoop\common\*;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\share\hadoop\hdfs;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\share\hadoop\hdfs\lib\*;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\share\hadoop\hdfs\*;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\share\hadoop\yarn\lib\*;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\share\hadoop\yarn\*;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\share\hadoop\mapreduce\lib\*;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\share\hadoop\mapreduce\*;c:\hdp\tez-0.5.2.2.2.0.0-2041\conf\;c:\hdp\tez-0.5.2.2.2.0.0-2041\*;c:\hdp\tez-0.5.2.2.2.0.0-2041\lib\*;;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\share\hadoop\yarn\*;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\share\hadoop\mapreduce\lib\*;c:\hdp\hadoop-2.7.1.2.3.0.0-2557\modules\* org.apache.hadoop.mapreduce.v2.hs.JobHistoryServer</arguments>
+</service>
