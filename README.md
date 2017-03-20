@@ -19,7 +19,7 @@ Someone malicious would need physical access to my office to sign artifacts unde
 The other tactic would have been for a malicious yubikey to end up being delivered by Amazon to my house. I don't have any defences against anyone going to that level of effort.
 
 
-(Artifacts prior to Hadoop 2.8.0-RC3 [were signed with a different key](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xA92454F9174786B4).
+Note: Artifacts prior to Hadoop 2.8.0-RC3 [were signed with a different key](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xA92454F9174786B4; again, on the ASF key list.
 
 ## Build Process
 
@@ -38,7 +38,7 @@ This uses a VS build setup from 2010; compiler and linker version: 16.00.30319.0
 
 
 
-Maven 3.3.9 was used; signature checked to be that of Jason@maven.org. While I don't directly trust that signature, I do trust that of other signatorees:
+Maven 3.3.9 was used; signature checked to be that of Jason@maven.org. While my key list doesn't directly trust that signature, I do trust that of other signatorees:
 
 https://pgp.mit.edu/pks/lookup?op=vindex&search=0xC7BF26D0BB617866
 
@@ -53,7 +53,14 @@ https://pgp.mit.edu/pks/lookup?op=vindex&search=0xC7BF26D0BB617866
     The build is based on the instructions in Hadoop's BUILDING.TXT
 
 
+Java 1.8:
 
+```
+>java -version
+java version "1.8.0_121"
+Java(TM) SE Runtime Environment (build 1.8.0_121-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)
+```
 
 ## release process
 
@@ -62,7 +69,7 @@ https://pgp.mit.edu/pks/lookup?op=vindex&search=0xC7BF26D0BB617866
 
 In `hadoop-trunk`
 
-The version to build is checked out from the declared SHA1 checksum of the release/RC, hopefully moving to tags once signing becomes more common.
+The version to build is checked out from the declared SHA1 checksum of the release/RC, hopefully moving to signed tags once signing becomes more common there.
 
 The build was executed, relying on the fact that the `native-win` profile is automatic on Windows:
 
@@ -117,7 +124,7 @@ git add *.asc
 git status
 git commit -S -m "sign Hadoop artifacts"
 git push
-
+```
 
 
 Then go to the directory with the zip file and sign that file too
