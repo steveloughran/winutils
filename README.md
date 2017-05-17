@@ -12,7 +12,7 @@ used system so is isolated from driveby/email security attacks.
 1. I'm signing the releases.
 1. My keys are published on the ASF committer keylist [under my username](https://people.apache.org/keys/committer/stevel).
 1. The latest GPG key  (E7E4 26DF 6228 1B63 D679  6A81 950C C3E0 32B7 9CA2) actually lives on a yubikey for physical security; the signing takes place there.
-1. The same yubikey key is used for 2FA to github, for uploading artifacts and making the release.
+1. The same pubikey key is used for 2FA to github, for uploading artifacts and making the release.
 
 Someone malicious would need physical access to my office to sign artifacts under my name. If they could do that, they could commit malicious code into Hadoop itself, even signing those commits with the same GPG key. Though they'd need the pin number to unlock the key, which I have to type in whenever the laptop wakes up and I want to sign something. That'd take getting something malicious onto my machine, or sniffing the bluetooth packets from the keyboard to laptop. Were someone to get physical access to my machine, they could probably install a malicous version of `git`, one which modified code before the checkin. I don't actually my patches to verify that there's been no tampering, but we do tend to keep an eye on what our peers put in.
 
