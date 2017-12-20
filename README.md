@@ -11,13 +11,15 @@ used system so is isolated from driveby/email security attacks.
 1. I am the Hadoop committer " stevel": I have nothing to gain by creating malicious versions of these binaries. If I wanted to run anything on your systems, I'd be able to add the code into Hadoop itself.
 1. I'm signing the releases.
 1. My keys are published on the ASF committer keylist [under my username](https://people.apache.org/keys/committer/stevel).
-1. The latest GPG key  (E7E4 26DF 6228 1B63 D679  6A81 950C C3E0 32B7 9CA2) actually lives on a yubikey for physical security; the signing takes place there.
+1. The latest GPG key (E7E4 26DF 6228 1B63 D679  6A81 950C C3E0 32B7 9CA2) actually lives on a yubikey for physical security; the signing takes place there.
 1. The same pubikey key is used for 2FA to github, for uploading artifacts and making the release.
 
 Someone malicious would need physical access to my office to sign artifacts under my name. If they could do that, they could commit malicious code into Hadoop itself, even signing those commits with the same GPG key. Though they'd need the pin number to unlock the key, which I have to type in whenever the laptop wakes up and I want to sign something. That'd take getting something malicious onto my machine, or sniffing the bluetooth packets from the keyboard to laptop. Were someone to get physical access to my machine, they could probably install a malicous version of `git`, one which modified code before the checkin. I don't actually my patches to verify that there's been no tampering, but we do tend to keep an eye on what our peers put in.
 
 The other tactic would have been for a malicious yubikey to end up being delivered by Amazon to my house. I don't have any defences against anyone going to that level of effort.
 
+*2017-12 Update* That key has been revoked, though it was never actually compromised. Lack of randomness in the prime number generator on the yubikey, hence
+[an emergency cancel session](http://steveloughran.blogspot.co.uk/2017/10/roca-breaks-my-commit-process.html). Not set things up properly again.
 
 Note: Artifacts prior to Hadoop 2.8.0-RC3 [were signed with a different key](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xA92454F9174786B4; again, on the ASF key list.
 
@@ -79,15 +81,19 @@ The build was executed, relying on the fact that the `native-win` profile is aut
 
 This creates a distribution, with the native binaries under `hadoop-dist\target\hadoop-X.Y.Z\bin`
 
-
-1. `set VERSION=hadoop-2.8.0`
-1. create dir `winutils\%VERSION%
-1. copy `hadoop-dist\target\%VERSION%\bin` to `winutils\%VERSION%`
-1. rm stuff you don't want
-1. add the rest
-1. `git add winutils\%VERSION%`
-1. `git commit`
-1. `git push`
+```
+set VERSION=hadoop-2.8.3
+cd winutils
+mkdir %VERSION%
+mkdir %VERSION%\bin
+cd ..
+copy trunk\hadoop-dist\target\%VERSION%\bin winutils\%VERSION%\bin
+cd winutils
+rm %VERSION%\bin\*.pdb
+git add %VERSION%
+git commit -m "Windows binaries for %VERSION%"
+git push
+```
 
 Create a zip file containing the contents of the `winutils\%VERSION%`. This is done on the windows machine to avoid any risk of the windows line-ending files getting modified by git. This isn't committed to git, just copied over to the host VM via the mounted file share.
 
