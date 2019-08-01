@@ -5,6 +5,16 @@ These are built directly from the same git commit used to create the official AS
 and built on a windows VM which is dedicated purely to testing Hadoop/YARN apps on Windows. It is not a day-to-day
 used system so is isolated from driveby/email security attacks.
 
+## Status: Go to cdarlint/winutils for current artifacts
+
+I've been too busy with things to work on this for a long time, so I'm grateful for cdarlint to take up this work:
+[cdarlint/winutils](https://github.com/cdarlint/winutils).
+
+If you want more current binaries, please go there.
+
+Do note that given some effort it should be possible to avoid the Hadoop `file://` classes (Local and RawLocal) to need the hadoop native
+libs except in the special case that you are doing file permissions work. If someone wants to do some effort into cutting the need for
+these libs on Windows systems just to run Spark & similar locally, file a JIRA [on Apache](https://issues.apache.org/jira/secure/Dashboard.jspa), then a PR against [apache/hadoop](https://github.com/apache/hadoop). Thanks
 
 ## Security: can you trust this release?
 
