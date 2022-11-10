@@ -5,6 +5,15 @@ These are built directly from the same git commit used to create the official AS
 and built on a windows VM which is dedicated purely to testing Hadoop/YARN apps on Windows. It is not a day-to-day
 used system so is isolated from driveby/email security attacks.
 
+
+## Status November 10, 2022: Bare Nakes Local FS
+
+(Garret Wilson)[https://github.com/garretwilson] has implemented a filesystem which can be used as a replacement for the classic FS, without the need for winutils
+
+* (GlobalMentor Hadoop Bare Naked Local FileSystem)[https://github.com/globalmentor/hadoop-bare-naked-local-fs]
+
+If this works for you, no need for winutils at all!
+
 ## Status: Go to cdarlint/winutils for current artifacts
 
 I've been too busy with things to work on this for a long time, so I'm grateful for cdarlint to take up this work:
